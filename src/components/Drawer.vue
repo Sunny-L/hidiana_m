@@ -43,7 +43,7 @@
     display: flex;
     flex-direction:column;
     .drawer-trigger {
-      height: 1rem;
+      height: 1.4rem;
       overflow:hidden;
     }
     .drawer-container {

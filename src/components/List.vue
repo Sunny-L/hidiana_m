@@ -39,12 +39,14 @@
 <style lang="scss" scoped>
   @import '../assets/lib.scss';
   .w-list {
+    font-size: 14px;
     .w-list-header {
       padding: .3rem .3rem .18rem;
-      font-size: 14px;
+      font-size: 16px;
       color: #888;
       display: inline-block;
       width: 100%;
+      border-bottom: 1px solid #ddd;
     }
     .w-list-item {
       min-height: .9rem;
@@ -63,7 +65,7 @@
             color: #888;
             margin-top: .12rem;
             line-height: 1.2;
-            font-size: .28rem;
+            font-size: 14px;
             @include ellipsis;
           }
         }
