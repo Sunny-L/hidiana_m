@@ -1,9 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from './vuex'
+
 import App from './App'
+import Nav from './components/Nav'
 import Hello from './views/Hello'
 import Index from './views/Index'
-import Nav from './components/Nav'
+import Bbs from './views/Bbs'
 
 require('./assets/main.scss')
 
@@ -15,6 +18,9 @@ const routes = [{
 }, {
   path: '/',
   component: Hello
+},{
+  path: '/bbs',
+  component: Bbs
 }, ]
 
 const router = new VueRouter({
@@ -23,16 +29,12 @@ const router = new VueRouter({
 
 const app = new Vue({
   router,
+  store,
   components: {
     vNav: Nav
   },
   template: `
-  <div>
     <v-nav>
-      <div slot="content">
-        <router-view></router-view>
-      </div>
     </v-nav>
-  </div>
   `
 }).$mount('#app')

@@ -1,18 +1,30 @@
 <template>
-  <div class="overlay"></div>
+  <div class="overlay" :class="{show: state}" @click="close()"></div>
 </template>
 <script>
-  export defualt {
-
+  export default {
+    props: ['state'],
+    methods: {
+      close(){
+        this.$emit('trigger')
+      }
+    }
   }
 </script>
-<style scoped>
+<style scoped lang="scss">
+  @import '../assets/lib.scss';
   .overlay {
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    position: absolute;
+    @include absolute;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    transition:all .3s ease;
+    transition-delay: .2s;
+    &.show {
+      opacity: 1;
+      visibility: visible;
+    }
   }
 
 </style>
