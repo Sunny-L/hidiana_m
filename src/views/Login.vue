@@ -1,14 +1,15 @@
 <template>
   <div class="page">
-    <field label="用户名" placeholder="请输入用户名" :value="user.username"></field>
-    <field label="密码" placeholder="请输入密码" type="password" :value="user.password"></field>
+    <field label="用户名" placeholder="请输入用户名" v-model="user.username" :state="state=='username'?'error':''"></field>
+    <field label="密码" placeholder="请输入密码" type="password" v-model="user.password" :state="state=='password'?'error':''"></field>
     <div class="submit" @click="submit()">
       <v-button type="primary" size="large">登录</v-button>
     </div>
   </div>
 </template>
 <script>
-  import { Field,Button } from 'mint-ui'
+  import { Field,Button,Toast } from 'mint-ui'
+  import {saveUser} from '../utils'
   export default {
     components: {
       // Field.name,
@@ -19,25 +20,36 @@
       return {
         user: {
           username: '',
-          pswd: '',
-          state: ''
-        }
+          password: '',
+        },
+        state: ''
       }
     },
     methods:{
       submit(){
-        console.log(12)
-        console.log(this.user)
-        return;
-        if(!this.username){
+        if(!this.user.username){
           this.state = 'username'
-        }else if(!this.pswd) {
-          this.state = 'pswd'
+        }else if(!this.user.password) {
+          this.state = 'password'
+        }else {
+          this.state = ''
         }
         if(this.state) return 
         else {
-          $.post('http://hidiana.cn/sys/login',{id:this.username,password:this.pswd},data=>{
-
+          $.post('http://hidiana.cn/sys/login',{id:this.user.username,password:this.user.password},data=>{
+            if(data.user.roles){
+              this.$store.commit('saveUser',{...data.user})
+              Toast({
+                message: '登录成功~!',
+                position: 'top'
+              })
+              setTimeout(()=>{
+                let redirect = decodeURIComponent(this.$route.query.redirect || '/index');
+                this.$router.push({
+                  path: redirect
+                })
+              },1500)
+            }
           })
         }
       }

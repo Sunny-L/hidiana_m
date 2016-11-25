@@ -2,12 +2,17 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from './vuex'
 
+import {
+  checkLocalUser
+} from './utils'
 import App from './App'
 import Nav from './components/Nav'
 import Hello from './views/Hello'
 import Index from './views/Index'
 import Bbs from './views/Bbs'
 import Login from './views/Login'
+import Hotspot from './views/Hotspot'
+
 
 require('./assets/main.scss')
 
@@ -25,6 +30,21 @@ const routes = [{
 }, {
   path: '/login',
   component: Login
+}, {
+  path: '/hotspot',
+  beforeEnter: (to, from, next) => {
+    if (checkLocalUser()) {
+      next()
+    } else {
+      next({
+        path: '/login',
+        query: {
+          redirect: to.fullPath
+        }
+      });
+    }
+  },
+  component: Hotspot
 }, ]
 
 const router = new VueRouter({
@@ -48,3 +68,5 @@ const app = new Vue({
     </v-nav>
   `
 }).$mount('#app')
+
+export default app
