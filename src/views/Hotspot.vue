@@ -1,6 +1,7 @@
 <template>
   <div class="page page-hotspot">
-    <List header="热点行业">
+    <p :class="{'websocket-error':websocketInfo}"v-if="websocketInfo">{{websocketInfo}}</p>
+    <List header="热点行业" v-else>
       <table class="w-table" slot="body">
         <thead>
           <tr>
@@ -24,35 +25,52 @@
   </div>
 </template>
 <script>
-  import { websocket } from '../utils'
-  import { mapState} from 'vuex'
+  import {
+    websocket
+  } from '../utils'
+  import {
+    mapState
+  } from 'vuex'
   import List from '../components/List.vue'
   export default {
     components: {
       List
     },
-    data(){
+    data() {
       return {
         items: []
       }
     },
-    computed: mapState([
-      'sgUser'
-    ]),
-    mounted() {
+    computed:
+    /*mapState([
+         'sgUser',
+         'websocketInfo'
+       ])*/
+      mapState({
+      sgUser(state) {
+        console.log(state)
+        return state.sgUser
+      },
+      websocketInfo(state) {
+        return state.websocketInfo
+      }
+    }),
+    created() {
       let userId = this.sgUser.id
-      // websocket.connect(`${websocket.websocket_url}?userId=${userId}`)
-      websocket.connect(`${websocket.websocket_url}hs-msg`,this)
-      // websocket.connect(websocket.websocket_url+'?userId='+userId)
+        // websocket.connect(`${websocket.websocket_url}?userId=${userId}`)
+      websocket.connect(`${websocket.websocket_url}hs-msg`, this)
+        // websocket.connect(websocket.websocket_url+'?userId='+userId)
     },
     methods: {
-      render(data){
+      render(data) {
         this.items = data
       }
     }
   }
 </script>
 <style lang="scss" scoped>
-
-
+  .websocket-error {
+    margin-top: 3rem;
+    text-align: center;
+  }
 </style>

@@ -4,7 +4,7 @@ export const checkLocalUser = (params) => {
   let user = sessionStorage.getItem('sgUser')
   if (user) {
     user = JSON.parse(user)
-    if (user.roles === 'vip') return true
+    if (user && user.roles === 'vip') return true
   }
   return false
 };
@@ -41,6 +41,7 @@ export const websocket = {
       console.log("Connected to WebSocket server.");
     }
     function onClose(event) {
+      parent.$store.commit('setWebsocket','websocket连接失败')
       console.log("Disconnected");
     }
     function onMessage(event) {

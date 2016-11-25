@@ -37,7 +37,7 @@
         if(this.state) return 
         else {
           $.post('http://hidiana.cn/sys/login',{id:this.user.username,password:this.user.password},data=>{
-            if(data.user.roles){
+            if(data.user && data.user.roles){
               this.$store.commit('saveUser',{...data.user})
               Toast({
                 message: '登录成功~!',

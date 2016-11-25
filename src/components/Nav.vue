@@ -15,15 +15,15 @@
         <li class="item">
           <router-link to="/hotspot">热点</router-link>
         </li>
-        <li class="item">
+        <!--<li class="item">
           <router-link to="/index">分时单</router-link>
-        </li>
+        </li>-->
         <li class="item">
           <router-link to="/bbs">股吧</router-link>
         </li>
-        <li class="item">
+        <!--<li class="item">
           <router-link to="/bbs">测试</router-link>
-        </li>
+        </li>-->
         <li class="item">
           <router-link to="/statchart">统计图表</router-link>
         </li>
@@ -33,26 +33,30 @@
   </div>
 </template>
 <script>
-  import { Header } from 'mint-ui';
-  import {mapMutation, mapState, mapActions} from 'vuex'
+  import {
+    Header
+  } from 'mint-ui';
+  import {
+    mapMutation,
+    mapState,
+    mapActions
+  } from 'vuex'
   import Drawer from './Drawer.vue'
   export default {
     components: {
       Drawer,
-      vHeader:Header
+      vHeader: Header
     },
-    data(){
-      return {
-      }
+    data() {
+      return {}
     },
-    computed:mapState([
+    computed: mapState([
       'sgUser',
       'drawerState'
     ]),
-    mounted: function(){
-    },
+    mounted: function() {},
     methods: {
-      trigger(){
+      trigger() {
         this.$store.commit('tiggerDrawerState')
       },
       ...mapActions(['logout'])
@@ -82,5 +86,4 @@
       }
     }
   }
-
 </style>

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import App from './main'
+import router from './router'
 
 import {
   getLocalUser,
@@ -12,7 +12,8 @@ export default new Vuex.Store({
   state: {
     drawerState: false,
     loading: false,
-    sgUser: getLocalUser()
+    sgUser: getLocalUser(),
+    websocketInfo: ''
   },
   getters: {},
   mutations: {
@@ -30,9 +31,11 @@ export default new Vuex.Store({
       state.sgUser = {}
     },
     saveUser(state, user) {
-      console.log(user);
       saveLocalUser(user)
       state.sgUser = user
+    },
+    setWebsocket(state, info) {
+      state.websocketInfo = info
     }
   },
   actions: {
@@ -42,7 +45,7 @@ export default new Vuex.Store({
       $.get('http://hidiana.cn/sys/logout', data => {
         if (data.status == '退出成功') {
           commit('clearUser')
-          App.$router.push('login')
+          router.push('login')
         }
       })
     }
