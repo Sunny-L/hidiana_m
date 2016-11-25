@@ -11,6 +11,7 @@
           <div class="w-list-extra">{{item.extra}}</div>
         </div>
       </div>
+      <slot name="body"></slot>
     </div>
     <div class="w-list-footer"></div>
   </div>

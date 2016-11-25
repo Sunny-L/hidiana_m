@@ -17,7 +17,6 @@ export default new Vuex.Store({
   getters: {},
   mutations: {
     tiggerDrawerState(state) {
-      console.log(state)
       state.drawerState = !state.drawerState
     },
     setLoading(state) {

@@ -24,6 +24,9 @@
         <li class="item">
           <router-link to="/bbs">测试</router-link>
         </li>
+        <li class="item">
+          <router-link to="/statchart">统计图表</router-link>
+        </li>
       </ul>
       <router-view slot="content"></router-view>
     </drawer>

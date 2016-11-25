@@ -11,3 +11,15 @@
   text-overflow: ellipsis;
   overflow: hidden;
 }
+@mixin red{
+  color: #F44336;
+}
+@mixin teal{
+  color: #009688;
+}
+@mixin brown{
+  color: #795548;
+}
+@mixin indigo{
+  color: #3F51B5;
+}

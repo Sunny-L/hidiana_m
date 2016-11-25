@@ -17,6 +17,9 @@
         return this.$store.state.loading
       }
     },
+    afterEach(to, from, next){
+      $('.drawer-content').off('scroll')
+    },
     data(){
       return {
         kw: '',

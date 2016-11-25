@@ -1,10 +1,12 @@
 * {
   box-sizing: border-box;
 }
-a{
+
+a {
   text-decoration: none;
-  color:#555; 
+  color: #555;
 }
+
 html,
 body,
 #main {
@@ -23,9 +25,48 @@ ul {
   margin: 0;
 }
 
+table {
+  width: 100%;
+  border-top: 1px solid #ddd;
+  tr {
+    td {
+      border-bottom: 1px solid #ddd;
+      padding: .2rem;
+      text-align: center;
+    }
+  }
+}
+
 .mint-header {
-  background:#05a;
-  a{
+  background: #05a;
+  a {
     color: #fff;
   }
+}
+
+h3 {
+  &.header {
+    padding: .3rem .3rem .18rem;
+    font-size: 16px;
+    color: #888;
+    display: inline-block;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+  }
+}
+
+.red {
+  color: #F44336;
+}
+
+.teal {
+  color: #009688;
+}
+
+.brown {
+  color: #795548;
+}
+
+.indigo {
+  color: #3F51B5;
 }

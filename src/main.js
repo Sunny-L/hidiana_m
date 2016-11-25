@@ -12,6 +12,7 @@ import Index from './views/Index'
 import Bbs from './views/Bbs'
 import Login from './views/Login'
 import Hotspot from './views/Hotspot'
+import StatChart from './views/StatChart'
 
 
 require('./assets/main.scss')
@@ -45,6 +46,9 @@ const routes = [{
     }
   },
   component: Hotspot
+}, {
+  path: '/statchart',
+  component: StatChart
 }, ]
 
 const router = new VueRouter({
