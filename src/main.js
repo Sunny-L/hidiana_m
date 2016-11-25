@@ -2,20 +2,16 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from './vuex'
 
-import {
-  checkLocalUser
-} from './utils'
-import App from './App'
 import Nav from './components/Nav'
-import Hello from './views/Hello'
-import Index from './views/Index'
-import Bbs from './views/Bbs'
-import Login from './views/Login'
-import Hotspot from './views/Hotspot'
-import StatChart from './views/StatChart'
-import router from './router'
+
+
+import routes from './router'
 
 require('./assets/main.scss')
+
+const router = new VueRouter({
+  routes
+})
 
 Vue.use(VueRouter)
 

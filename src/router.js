@@ -1,3 +1,14 @@
+
+import Hello from './views/Hello'
+import Index from './views/Index'
+import Bbs from './views/Bbs'
+import Login from './views/Login'
+import Hotspot from './views/Hotspot'
+import StatChart from './views/StatChart'
+import {
+  checkLocalUser
+} from './utils'
+
 const routes = [{
   path: '/index',
   component: Index
@@ -30,6 +41,4 @@ const routes = [{
   component: StatChart
 }, ]
 
-export const router = new VueRouter({
-  routes
-})
+export default routes
